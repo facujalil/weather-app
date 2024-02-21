@@ -1,0 +1,35 @@
+.forecastCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 11.5rem;
+  padding: 1rem 0;
+  background-color: #1e213a;
+}
+
+.forecastCardImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.5rem;
+  height: 6rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.forecastCardDate p {
+  text-align: center;
+}
+
+.forecastCardTemps {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.forecastCardTemps p:last-child {
+  opacity: 0.7;
+}

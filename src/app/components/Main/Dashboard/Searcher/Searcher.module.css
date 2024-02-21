@@ -1,0 +1,51 @@
+.searcher {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  width: 85%;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.15em;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.searcher form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.searcher form input,
+.searcher form button {
+  height: 3rem;
+  padding: 0 0.75rem;
+}
+
+.searcher form input {
+  width: 100%;
+  max-width: 20rem;
+  font-size: 1em;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid #e7e7eb;
+}
+
+.searcher form button {
+  font-size: 1em;
+  background-color: #3c47e9;
+  border: none;
+  cursor: pointer;
+}
