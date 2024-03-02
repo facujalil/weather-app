@@ -2,7 +2,6 @@ import React from "react";
 import style from "./LocationOption.module.css";
 import { Location } from "@/app/types";
 import Image from "next/image";
-import rightArrowIcon from "/public/img/right-arrow-icon.svg";
 
 interface Props {
   locationOption: Location;
@@ -35,7 +34,7 @@ function LocationOption({
         {locationOption.state && `, ${locationOption.state}`}
       </p>
       <Image
-        src={rightArrowIcon}
+        src="/img/right-arrow-icon.svg"
         alt="Right arrow"
         width={0}
         height={0}

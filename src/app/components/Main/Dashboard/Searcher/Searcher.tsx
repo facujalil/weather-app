@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import style from "./Searcher.module.css";
 import { Location } from "@/app/types";
 import Image from "next/image";
-import closeIcon from "/public/img/close-icon.svg";
 import SearchForm from "./SearchForm/SearchForm";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import Results from "./Results/Results";
@@ -38,7 +37,16 @@ function Searcher({
   return (
     <div className={style.searcher}>
       <button className={style.closeButton} onClick={() => setSearcher(false)}>
-        <Image src={closeIcon} alt="Close" width={22} />
+        <Image
+          src="/img/close-icon.svg"
+          alt="Close"
+          width={0}
+          height={0}
+          style={{
+            width: "22px",
+            height: "auto",
+          }}
+        />
       </button>
 
       <SearchForm

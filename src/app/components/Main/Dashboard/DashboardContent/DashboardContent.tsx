@@ -2,8 +2,6 @@ import React from "react";
 import style from "./DashboardContent.module.css";
 import { Location, Weather } from "@/app/types";
 import Image from "next/image";
-import cloudBackground from "/public/img/cloud-background.png";
-import locationIcon from "/public/img/location-icon.svg";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import { getDate } from "@/utils/getDate";
 
@@ -18,7 +16,7 @@ function DashboardContent({ location, weather, unit }: Props) {
     <div className={style.dashboardContent}>
       <div className={style.cloudBackground}>
         <Image
-          src={cloudBackground}
+          src="/img/cloud-background.png"
           alt=""
           width={0}
           height={0}
@@ -33,7 +31,7 @@ function DashboardContent({ location, weather, unit }: Props) {
       <p className={style.currentDate}>Today • {getDate(0)}</p>
       <p className={style.weatherLocation}>
         <Image
-          src={locationIcon}
+          src="/img/location-icon.svg"
           alt="Location"
           width={0}
           height={0}

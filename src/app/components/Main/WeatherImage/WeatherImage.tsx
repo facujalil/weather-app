@@ -1,12 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import lightCloudImg from "/public/img/light-cloud.png";
-import heavyRainImg from "/public/img/heavy-rain.png";
-import showerImg from "/public/img/shower.png";
-import thunderstormImg from "/public/img/thunderstorm.png";
-import snowImg from "/public/img/snow.png";
-import heavyCloudImg from "/public/img/heavy-cloud.png";
-import clearImg from "/public/img/clear.png";
 
 interface Props {
   weatherImg: {
@@ -21,18 +14,18 @@ function WeatherImage({ weatherImg }: Props) {
     <Image
       src={
         weatherIcon === "02" || weatherIcon === "03" || weatherIcon === "04"
-          ? lightCloudImg
+          ? "/img/light-cloud.png"
           : weatherIcon === "09"
-          ? heavyRainImg
+          ? "/img/heavy-rain.png"
           : weatherIcon === "10"
-          ? showerImg
+          ? "/img/shower.png"
           : weatherIcon === "11"
-          ? thunderstormImg
+          ? "/img/thunderstorm.png"
           : weatherIcon === "13"
-          ? snowImg
+          ? "/img/snow.png"
           : weatherIcon === "50"
-          ? heavyCloudImg
-          : clearImg
+          ? "/img/heavy-cloud.png"
+          : "/img/clear.png"
       }
       alt={weatherImg.main}
       width={0}

@@ -2,7 +2,6 @@ import React from "react";
 import style from "./DashboardMenu.module.css";
 import { Location } from "@/app/types";
 import Image from "next/image";
-import myLocationIcon from "/public/img/my-location-icon.svg";
 
 interface Props {
   setLocation: React.Dispatch<React.SetStateAction<Location>>;
@@ -69,7 +68,7 @@ function DashboardMenu({
       </button>
       <button onClick={getUserLocation}>
         <Image
-          src={myLocationIcon}
+          src="/img/my-location-icon.svg"
           alt="My location"
           width={0}
           height={0}

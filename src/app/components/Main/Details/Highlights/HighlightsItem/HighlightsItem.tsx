@@ -2,7 +2,6 @@ import React from "react";
 import style from "./HighlightsItem.module.css";
 import { Weather } from "@/app/types";
 import Image from "next/image";
-import windDirectionIcon from "/public/img/wind-direction-icon.svg";
 import { calculateWindDeg } from "@/utils/calculateWindDeg";
 
 interface Props {
@@ -23,14 +22,17 @@ function HighlightsItem({ title, value, unit, weather }: Props) {
       {title === "Wind status" ? (
         <div className={style.windDegContainer}>
           <Image
-            src={windDirectionIcon}
+            src="/img/wind-direction-icon.svg"
             alt="Wind direction"
-            width={20}
-            style={
-              weather
-                ? { transform: `rotate(${weather.current.wind_deg}deg)` }
-                : { transform: "" }
-            }
+            width={0}
+            height={0}
+            style={{
+              width: "20px",
+              height: "auto",
+              transform: weather
+                ? `rotate(${weather.current.wind_deg}deg)`
+                : "",
+            }}
           />
           <span>{weather && calculateWindDeg(weather.current.wind_deg)}</span>
         </div>
