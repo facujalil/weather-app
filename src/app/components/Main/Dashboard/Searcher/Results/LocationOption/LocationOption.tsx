@@ -5,7 +5,7 @@ import Image from "next/image";
 
 interface Props {
   locationOption: Location;
-  setLocation: React.Dispatch<React.SetStateAction<Location>>;
+  setLocation: React.Dispatch<React.SetStateAction<Location | undefined>>;
   setSearcher: React.Dispatch<React.SetStateAction<boolean>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }

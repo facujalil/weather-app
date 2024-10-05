@@ -5,7 +5,7 @@ import LocationOption from "./LocationOption/LocationOption";
 
 interface Props {
   results: Location[] | "not results";
-  setLocation: React.Dispatch<React.SetStateAction<Location>>;
+  setLocation: React.Dispatch<React.SetStateAction<Location | undefined>>;
   setSearcher: React.Dispatch<React.SetStateAction<boolean>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }

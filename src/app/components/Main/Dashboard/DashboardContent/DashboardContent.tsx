@@ -6,7 +6,7 @@ import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import { getDate } from "@/utils/getDate";
 
 interface Props {
-  location: Location;
+  location?: Location;
   weather: Weather;
   unit: string;
 }
@@ -29,17 +29,19 @@ function DashboardContent({ location, weather, unit }: Props) {
       <CurrentWeather weather={weather} unit={unit} />
 
       <p className={style.currentDate}>Today • {getDate(0)}</p>
-      <p className={style.weatherLocation}>
-        <Image
-          src="/img/location-icon.svg"
-          alt="Location"
-          width={0}
-          height={0}
-          style={{ width: "14px", height: "auto" }}
-        />{" "}
-        {location.name}
-        {location.state && `, ${location.state}`}
-      </p>
+      {location && (
+        <p className={style.weatherLocation}>
+          <Image
+            src="/img/location-icon.svg"
+            alt="Location"
+            width={0}
+            height={0}
+            style={{ width: "14px", height: "auto" }}
+          />{" "}
+          {location.name}
+          {location.state && `, ${location.state}`}
+        </p>
+      )}
     </div>
   );
 }

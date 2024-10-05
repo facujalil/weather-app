@@ -4,7 +4,7 @@ import { Location } from "@/app/types";
 import Image from "next/image";
 
 interface Props {
-  setLocation: React.Dispatch<React.SetStateAction<Location>>;
+  setLocation: React.Dispatch<React.SetStateAction<Location | undefined>>;
   setSearcher: React.Dispatch<React.SetStateAction<boolean>>;
   setResults: React.Dispatch<React.SetStateAction<Location[] | "not results">>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,17 +17,26 @@ function DashboardMenu({
   setLoading,
 }: Props) {
   const getReverseGeocoding = async (lat: number, lon: number) => {
-    const res = await fetch(
-      `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
-    );
-    const data = await res.json();
+    try {
+      const res = await fetch(
+        `/api/reverse-geocoding?lat=${lat}&lon=${lon}&limit=1`
+      );
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Something went wrong");
+      }
 
-    setLocation({
-      name: data[0].name,
-      state: data[0].state,
-      lat: data[0].lat,
-      lon: data[0].lon,
-    });
+      const data = await res.json();
+
+      setLocation({
+        name: data[0].name,
+        state: data[0].state,
+        lat: data[0].lat,
+        lon: data[0].lon,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const getUserLocation = () => {

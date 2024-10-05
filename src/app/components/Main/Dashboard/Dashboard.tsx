@@ -7,8 +7,8 @@ import DashboardMenu from "./DashboardMenu/DashboardMenu";
 import DashboardContent from "./DashboardContent/DashboardContent";
 
 interface Props {
-  location: Location;
-  setLocation: React.Dispatch<React.SetStateAction<Location>>;
+  location?: Location;
+  setLocation: React.Dispatch<React.SetStateAction<Location | undefined>>;
   weather: Weather;
   unit: string;
   loading: boolean;

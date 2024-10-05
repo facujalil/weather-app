@@ -7,7 +7,7 @@ import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import Results from "./Results/Results";
 
 interface Props {
-  setLocation: React.Dispatch<React.SetStateAction<Location>>;
+  setLocation: React.Dispatch<React.SetStateAction<Location | undefined>>;
   results: Location[] | "not results";
   setResults: React.Dispatch<React.SetStateAction<Location[] | "not results">>;
   setSearcher: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,13 +25,23 @@ function Searcher({
   const [loadingResults, setLoadingResults] = useState(false);
 
   const getLocationOptions = async () => {
-    const res = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${searchedLocation}&limit=5&appid=${process.env.NEXT_PUBLIC_API_KEY}`
-    );
-    const data = await res.json();
+    try {
+      const res = await fetch(
+        `/api/direct-geocoding?q=${searchedLocation}&limit=5`
+      );
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Something went wrong");
+      }
 
-    setResults(data.length > 0 ? data : "not results");
-    setLoadingResults(false);
+      const data = await res.json();
+
+      setResults(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingResults(false);
+    }
   };
 
   return (
