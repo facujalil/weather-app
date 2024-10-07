@@ -1,0 +1,25 @@
+.searchForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.searchForm input,
+.searchForm button {
+  height: 3rem;
+  padding: 0 0.75rem;
+}
+
+.searchForm input {
+  width: 100%;
+  max-width: 20rem;
+  background-color: transparent;
+  border: 1px solid #e7e7eb;
+}
+
+.searchForm button {
+  background-color: #3c47e9;
+}

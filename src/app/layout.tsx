@@ -1,10 +1,6 @@
 import { ReactNode } from "react";
 import { Raleway } from "next/font/google";
 
-interface Props {
-  children: ReactNode;
-}
-
 const raleway = Raleway({
   subsets: ["latin"],
   variable: "--raleway-font",
@@ -16,7 +12,7 @@ export const metadata = {
   description: "Weather App build with Next.js",
 };
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={raleway.variable}>
       <head>

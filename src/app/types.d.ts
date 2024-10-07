@@ -1,11 +1,15 @@
-export interface Location {
+export type TemperatureUnit = "C" | "F";
+
+export type MeasurementUnit = "mph" | "%" | "miles" | "mb";
+
+export interface LocationData {
   name: string;
   lat: number;
   lon: number;
   state: string;
 }
 
-export interface Weather {
+export interface WeatherData {
   current: {
     temp: number;
     pressure: number;

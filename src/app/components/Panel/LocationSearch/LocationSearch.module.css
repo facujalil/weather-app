@@ -1,0 +1,21 @@
+.locationSearch {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  width: 85%;
+}
+
+.locationSearch button:first-child {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.locationSearch button:first-child svg {
+  font-size: 2.35em;
+}

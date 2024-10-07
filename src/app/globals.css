@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--raleway-font), sans-serif;
+}
+
+body {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  color: #e7e7eb;
+  background-color: #100e1d;
+}
+
+button,
+input,
+a {
+  font-family: inherit;
+  color: inherit;
+}
+
+button,
+input {
+  font-size: 1em;
+  border: none;
+}
+
+input {
+  outline: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 875px) {
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    overflow: visible;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  html {
+    font-size: 14px;
+  }
+}

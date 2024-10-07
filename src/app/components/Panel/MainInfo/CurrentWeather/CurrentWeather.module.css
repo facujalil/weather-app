@@ -1,0 +1,31 @@
+.currentWeather {
+  z-index: 99;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.weatherImgContainer {
+  width: 9rem;
+  height: 9rem;
+}
+
+.currentWeather h1 {
+  font-size: 5.75em;
+  font-weight: 500;
+}
+
+.currentWeather h1 span {
+  font-size: 0.5em;
+}
+
+.currentWeather h2 {
+  font-size: 1.75em;
+  font-weight: 600;
+  opacity: 0.7;
+}

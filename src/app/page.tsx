@@ -1,59 +1,29 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import "../css/globals.css";
-import { Location, Weather } from "./types";
-import Main from "./components/Main/Main";
+import { useEffect, useState } from "react";
+import "./globals.css";
+import { LocationData, TemperatureUnit, WeatherData } from "./types";
+import Details from "./components/Details/Details";
+import Panel from "./components/Panel/Panel";
 
 function Page() {
-  const [location, setLocation] = useState<Location | undefined>();
-  const [unit, setUnit] = useState("celsius");
-  const [weather, setWeather] = useState<Weather>({
-    current: {
-      temp: 0,
-      pressure: 0,
-      humidity: 0,
-      clouds: 0,
-      visibility: 0,
-      wind_speed: 0,
-      wind_deg: 0,
-      weather: [
-        {
-          main: "",
-          icon: "",
-        },
-      ],
-    },
-    daily: [
-      {
-        temp: {
-          min: 0,
-          max: 0,
-        },
-        weather: [
-          {
-            id: 0,
-            main: "",
-            icon: "",
-          },
-        ],
-      },
-    ],
-  });
-  const [loading, setLoading] = useState(true);
+  const [locationData, setLocationData] = useState<LocationData>();
+  const [weatherData, setWeatherData] = useState<WeatherData>();
+  const [unit, setUnit] = useState<TemperatureUnit>("C");
+  const [loadingWeatherData, setLoadingWeatherData] = useState(true);
 
   useEffect(() => {
     getDefaultLocation();
   }, []);
 
   useEffect(() => {
-    if (location) {
-      if (!loading) {
-        setLoading(true);
+    if (locationData) {
+      if (!loadingWeatherData) {
+        setLoadingWeatherData(true);
       }
-      getWeather(location.lat, location.lon);
+      getWeatherData(locationData.lat, locationData.lon);
     }
-  }, [location]);
+  }, [locationData]);
 
   const getDefaultLocation = async () => {
     try {
@@ -64,14 +34,14 @@ function Page() {
       }
 
       const data = await res.json();
-      setLocation(data[0]);
+      setLocationData(data[0]);
     } catch (error) {
       console.error(error);
-      setLoading(false);
+      setLoadingWeatherData(false);
     }
   };
 
-  const getWeather = async (lat: number, lon: number) => {
+  const getWeatherData = async (lat: number, lon: number) => {
     try {
       const res = await fetch(`/api/weather-data?lat=${lat}&lon=${lon}`);
       if (!res.ok) {
@@ -81,24 +51,31 @@ function Page() {
 
       const data = await res.json();
 
-      setWeather(data);
+      setWeatherData(data);
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      setLoadingWeatherData(false);
     }
   };
 
   return (
-    <Main
-      location={location}
-      setLocation={setLocation}
-      weather={weather}
-      unit={unit}
-      setUnit={setUnit}
-      loading={loading}
-      setLoading={setLoading}
-    />
+    <>
+      <Panel
+        locationData={locationData}
+        setLocationData={setLocationData}
+        loadingWeatherData={loadingWeatherData}
+        setLoadingWeatherData={setLoadingWeatherData}
+        weatherData={weatherData}
+        unit={unit}
+      />
+      <Details
+        loadingWeatherData={loadingWeatherData}
+        unit={unit}
+        setUnit={setUnit}
+        weatherData={weatherData}
+      />
+    </>
   );
 }
 

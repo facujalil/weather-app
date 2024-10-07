@@ -1,0 +1,26 @@
+.menu {
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+}
+
+.menu button {
+  height: 3rem;
+  background-color: #6e707a;
+}
+
+.menu button:first-child {
+  padding: 0 0.75rem;
+}
+
+.menu button:last-child {
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.menu button:last-child svg {
+  vertical-align: middle;
+  font-size: 1.75em;
+}

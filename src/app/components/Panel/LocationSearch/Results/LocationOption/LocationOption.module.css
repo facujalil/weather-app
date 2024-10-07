@@ -1,0 +1,26 @@
+.locationOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 0.75rem;
+  cursor: pointer;
+}
+
+.locationOption:hover {
+  outline: 1px solid rgba(231, 231, 235, 0.5);
+}
+
+.locationOption p {
+  width: 90%;
+}
+
+.locationOption svg {
+  visibility: hidden;
+  opacity: 0.5;
+  font-size: 1.5em;
+}
+
+.locationOption:hover svg {
+  visibility: visible;
+}

@@ -1,8 +1,0 @@
-.forecastCardsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 0.75fr));
-  justify-content: center;
-  place-items: center;
-  gap: 2rem;
-  width: 85%;
-}

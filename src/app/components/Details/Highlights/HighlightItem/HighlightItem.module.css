@@ -1,0 +1,80 @@
+.highlightItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 0;
+  background-color: #1e213a;
+}
+
+.highlightItem h4 {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.highlightItem:nth-child(3),
+.highlightItem:nth-child(4) {
+  padding-bottom: 3rem;
+}
+
+.highlightItem p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.highlightItem p span {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.windDeg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.windDeg svg {
+  font-size: 2em;
+}
+
+.percentageBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.percentageIndicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.percentageIndicators span {
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+.percentageBar {
+  overflow: hidden;
+  width: 100%;
+  height: 0.5rem;
+  background-color: #e7e7eb;
+  border-radius: 99px;
+}
+
+.percentageBarProgress {
+  height: 0.5rem;
+  background-color: #ffec65;
+}
+
+.percentageBarContainer span:last-child {
+  align-self: flex-end;
+}

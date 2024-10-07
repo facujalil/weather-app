@@ -1,0 +1,31 @@
+.forecastDay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  background-color: #1e213a;
+}
+
+.weatherImgContainer {
+  height: 4.5rem;
+  width: 4.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.forecastDayDate p {
+  text-align: center;
+}
+
+.forecastDayTemps {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.forecastDayTemps p:last-child {
+  opacity: 0.7;
+}

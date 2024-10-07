@@ -1,0 +1,32 @@
+.highlights {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 85%;
+}
+
+.highlights h3 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.highlightItemsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 875px) {
+  .highlights {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .highlightItemsContainer {
+    grid-template-columns: auto;
+  }
+}
