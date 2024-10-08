@@ -19,6 +19,54 @@
   width: 100%;
 }
 
+.windDeg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.windDeg svg {
+  font-size: 2em;
+}
+
+.percentageBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.percentageIndicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.percentageIndicators span {
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+.percentageBar {
+  overflow: hidden;
+  width: 100%;
+  height: 0.5rem;
+  background-color: #e7e7eb;
+  border-radius: 99px;
+}
+
+.percentageBarProgress {
+  height: 0.5rem;
+  background-color: #ffec65;
+}
+
+.percentageBarContainer span:last-child {
+  align-self: flex-end;
+}
+
 @media screen and (max-width: 875px) {
   .highlights {
     align-items: center;

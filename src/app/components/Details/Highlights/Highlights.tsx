@@ -1,7 +1,9 @@
 import style from "./Highlights.module.css";
 import { useWeatherContext } from "@/app/context/WeatherContext";
+import { calculateWindDeg } from "@/app/utils/calculateWindDeg";
 import { convertMetersToMiles } from "@/app/utils/convertMetersToMiles";
 import HighlightItem from "./HighlightItem/HighlightItem";
+import { MdNavigation } from "react-icons/md";
 
 function Highlights() {
   const { weatherData } = useWeatherContext();
@@ -16,12 +18,42 @@ function Highlights() {
             weatherData ? Number(weatherData.current.wind_speed.toFixed()) : 0
           }
           unit="mph"
-        />
+        >
+          <div className={style.windDeg}>
+            <MdNavigation
+              style={{
+                transform: `rotate(${
+                  weatherData ? weatherData.current.wind_deg : 0
+                }deg)`,
+              }}
+            />
+            <span>
+              {calculateWindDeg(weatherData ? weatherData.current.wind_deg : 0)}
+            </span>
+          </div>
+        </HighlightItem>
         <HighlightItem
           title="Humidity"
           value={weatherData ? Number(weatherData.current.humidity) : 0}
           unit="%"
-        />
+        >
+          <div className={style.percentageBarContainer}>
+            <div className={style.percentageIndicators}>
+              <span>0</span>
+              <span>50</span>
+              <span>100</span>
+            </div>
+            <div className={style.percentageBar}>
+              <div
+                className={style.percentageBarProgress}
+                style={{
+                  width: `${weatherData ? weatherData.current.humidity : 0}%`,
+                }}
+              ></div>
+            </div>
+            <span>%</span>
+          </div>
+        </HighlightItem>
         <HighlightItem
           title="Visibility"
           value={
