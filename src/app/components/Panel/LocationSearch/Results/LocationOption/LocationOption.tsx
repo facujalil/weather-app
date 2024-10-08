@@ -1,14 +1,15 @@
-import { Dispatch, SetStateAction } from "react";
 import style from "./LocationOption.module.css";
 import { LocationData } from "@/app/types";
+import { useWeatherContext } from "@/app/context/WeatherContext";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 interface Props {
   locationOption: LocationData;
-  setLocationData: Dispatch<SetStateAction<LocationData | undefined>>;
 }
 
-function LocationOption({ locationOption, setLocationData }: Props) {
+function LocationOption({ locationOption }: Props) {
+  const { setLocationData } = useWeatherContext();
+
   return (
     <div
       className={style.locationOption}

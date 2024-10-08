@@ -3,17 +3,17 @@ import style from "./SearchForm.module.css";
 import { LocationData } from "@/app/types";
 
 interface Props {
-  setLoadingResults: Dispatch<SetStateAction<boolean>>;
+  setResultsLoading: Dispatch<SetStateAction<boolean>>;
   setResults: Dispatch<SetStateAction<LocationData[] | undefined>>;
 }
 
-function SearchForm({ setLoadingResults, setResults }: Props) {
+function SearchForm({ setResultsLoading, setResults }: Props) {
   const [searchLocation, setSearchLocation] = useState("");
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (searchLocation) {
-      setLoadingResults(true);
+      setResultsLoading(true);
       getLocationOptions();
     }
   };
@@ -29,12 +29,11 @@ function SearchForm({ setLoadingResults, setResults }: Props) {
       }
 
       const data = await res.json();
-
       setResults(data);
     } catch (error) {
       console.error(error);
     } finally {
-      setLoadingResults(false);
+      setResultsLoading(false);
     }
   };
 

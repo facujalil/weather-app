@@ -2,15 +2,14 @@
 
 import { useEffect, useState } from "react";
 import "./globals.css";
-import { LocationData, TemperatureUnit, WeatherData } from "./types";
+import { useWeatherContext } from "./context/WeatherContext";
 import Details from "./components/Details/Details";
 import Panel from "./components/Panel/Panel";
 
 function Page() {
-  const [locationData, setLocationData] = useState<LocationData>();
-  const [weatherData, setWeatherData] = useState<WeatherData>();
-  const [unit, setUnit] = useState<TemperatureUnit>("C");
-  const [loadingWeatherData, setLoadingWeatherData] = useState(true);
+  const { locationData, setLocationData, setWeatherData } = useWeatherContext();
+
+  const [weatherDataLoading, setWeatherDataLoading] = useState(true);
 
   useEffect(() => {
     getDefaultLocation();
@@ -18,8 +17,8 @@ function Page() {
 
   useEffect(() => {
     if (locationData) {
-      if (!loadingWeatherData) {
-        setLoadingWeatherData(true);
+      if (!weatherDataLoading) {
+        setWeatherDataLoading(true);
       }
       getWeatherData(locationData.lat, locationData.lon);
     }
@@ -27,7 +26,7 @@ function Page() {
 
   const getDefaultLocation = async () => {
     try {
-      const res = await fetch("api/direct-geocoding?q=London&limit=1");
+      const res = await fetch("/api/direct-geocoding?q=London&limit=1");
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.message || "Something went wrong");
@@ -37,7 +36,7 @@ function Page() {
       setLocationData(data[0]);
     } catch (error) {
       console.error(error);
-      setLoadingWeatherData(false);
+      setWeatherDataLoading(false);
     }
   };
 
@@ -50,31 +49,21 @@ function Page() {
       }
 
       const data = await res.json();
-
       setWeatherData(data);
     } catch (error) {
       console.error(error);
     } finally {
-      setLoadingWeatherData(false);
+      setWeatherDataLoading(false);
     }
   };
 
   return (
     <>
       <Panel
-        locationData={locationData}
-        setLocationData={setLocationData}
-        loadingWeatherData={loadingWeatherData}
-        setLoadingWeatherData={setLoadingWeatherData}
-        weatherData={weatherData}
-        unit={unit}
+        weatherDataLoading={weatherDataLoading}
+        setWeatherDataLoading={setWeatherDataLoading}
       />
-      <Details
-        loadingWeatherData={loadingWeatherData}
-        unit={unit}
-        setUnit={setUnit}
-        weatherData={weatherData}
-      />
+      <Details weatherDataLoading={weatherDataLoading} />
     </>
   );
 }

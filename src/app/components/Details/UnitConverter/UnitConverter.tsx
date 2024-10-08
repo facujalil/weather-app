@@ -1,13 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
 import style from "./UnitConverter.module.css";
-import { TemperatureUnit } from "@/app/types";
+import { useWeatherContext } from "@/app/context/WeatherContext";
 
-interface Props {
-  unit: TemperatureUnit;
-  setUnit: Dispatch<SetStateAction<TemperatureUnit>>;
-}
+function UnitConverter() {
+  const { unit, setUnit } = useWeatherContext();
 
-function UnitConverter({ unit, setUnit }: Props) {
   return (
     <div className={style.unitConverter}>
       <button

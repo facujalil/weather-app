@@ -1,5 +1,6 @@
 import style from "./HighlightItem.module.css";
-import { MeasurementUnit, WeatherData } from "@/app/types";
+import { MeasurementUnit } from "@/app/types";
+import { useWeatherContext } from "@/app/context/WeatherContext";
 import { calculateWindDeg } from "@/app/utils/calculateWindDeg";
 import { MdNavigation } from "react-icons/md";
 
@@ -7,10 +8,11 @@ interface Props {
   title: string;
   value: number;
   unit: MeasurementUnit;
-  weatherData?: WeatherData;
 }
 
-function HighlightItem({ title, value, unit, weatherData }: Props) {
+function HighlightItem({ title, value, unit }: Props) {
+  const { weatherData } = useWeatherContext();
+
   return (
     <div className={style.highlightItem}>
       <h4>{title}</h4>

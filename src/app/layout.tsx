@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Raleway } from "next/font/google";
+import WeatherProvider from "./context/WeatherContext";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body>{children}</body>
+      <body>
+        <WeatherProvider>{children}</WeatherProvider>
+      </body>
     </html>
   );
 }

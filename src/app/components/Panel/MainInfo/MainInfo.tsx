@@ -1,23 +1,19 @@
 import style from "./MainInfo.module.css";
-import { LocationData, TemperatureUnit, WeatherData } from "@/app/types";
+import { useWeatherContext } from "@/app/context/WeatherContext";
 import { formatDateFromToday } from "@/app/utils/formatDateFromToday";
 import WeatherImage from "../../common/WeatherImage/WeatherImage";
 import CurrentWeather from "./CurrentWeather/CurrentWeather";
 import { IoLocationSharp } from "react-icons/io5";
 
-interface Props {
-  weatherData?: WeatherData;
-  unit: TemperatureUnit;
-  locationData?: LocationData;
-}
+function MainInfo() {
+  const { locationData } = useWeatherContext();
 
-function MainInfo({ weatherData, unit, locationData }: Props) {
   return (
     <div className={style.mainInfo}>
       <div className={style.cloudBackground}>
         <WeatherImage src="/img/cloud-background.png" alt="Cloud background" />
       </div>
-      <CurrentWeather weatherData={weatherData} unit={unit} />
+      <CurrentWeather />
       <div className={style.currentDate}>
         <p>Today • {formatDateFromToday()}</p>
       </div>

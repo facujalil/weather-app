@@ -1,15 +1,12 @@
 import style from "./CurrentWeather.module.css";
-import { TemperatureUnit, WeatherData } from "@/app/types";
+import { useWeatherContext } from "@/app/context/WeatherContext";
 import { mapWeatherIconToImage } from "@/app/utils/mapWeatherIconToImage";
 import { convertCelsiusToFahrenheit } from "@/app/utils/convertCelsiusToFahrenheit";
 import WeatherImage from "@/app/components/common/WeatherImage/WeatherImage";
 
-interface Props {
-  weatherData?: WeatherData;
-  unit: TemperatureUnit;
-}
+function CurrentWeather() {
+  const { weatherData, unit } = useWeatherContext();
 
-function CurrentWeather({ weatherData, unit }: Props) {
   return (
     <div className={style.currentWeather}>
       <div className={style.weatherImgContainer}>

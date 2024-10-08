@@ -1,28 +1,19 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import style from "./Panel.module.css";
-import { LocationData, TemperatureUnit, WeatherData } from "@/app/types";
+import { useWeatherContext } from "@/app/context/WeatherContext";
 import LoadingSpinner from "../common/LoadingSpinner/LoadingSpinner";
 import LocationSearch from "./LocationSearch/LocationSearch";
 import Menu from "./Menu/Menu";
 import MainInfo from "./MainInfo/MainInfo";
 
 interface Props {
-  locationData?: LocationData;
-  setLocationData: Dispatch<SetStateAction<LocationData | undefined>>;
-  loadingWeatherData: boolean;
-  setLoadingWeatherData: Dispatch<SetStateAction<boolean>>;
-  weatherData?: WeatherData;
-  unit: TemperatureUnit;
+  weatherDataLoading: boolean;
+  setWeatherDataLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-function Panel({
-  locationData,
-  setLocationData,
-  loadingWeatherData,
-  setLoadingWeatherData,
-  weatherData,
-  unit,
-}: Props) {
+function Panel({ weatherDataLoading, setWeatherDataLoading }: Props) {
+  const { locationData } = useWeatherContext();
+
   const [showLocationSearch, setShowLocationSearch] = useState(false);
 
   useEffect(() => {
@@ -33,25 +24,17 @@ function Panel({
 
   return (
     <div className={style.panel}>
-      {loadingWeatherData ? (
+      {weatherDataLoading ? (
         <LoadingSpinner />
       ) : showLocationSearch ? (
-        <LocationSearch
-          setShowLocationSearch={setShowLocationSearch}
-          setLocationData={setLocationData}
-        />
+        <LocationSearch setShowLocationSearch={setShowLocationSearch} />
       ) : (
         <>
           <Menu
-            setLocationData={setLocationData}
-            setLoadingWeatherData={setLoadingWeatherData}
+            setWeatherDataLoading={setWeatherDataLoading}
             setShowLocationSearch={setShowLocationSearch}
           />
-          <MainInfo
-            weatherData={weatherData}
-            unit={unit}
-            locationData={locationData}
-          />
+          <MainInfo />
         </>
       )}
     </div>

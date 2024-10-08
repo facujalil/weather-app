@@ -7,12 +7,11 @@ import Results from "./Results/Results";
 
 interface Props {
   setShowLocationSearch: Dispatch<SetStateAction<boolean>>;
-  setLocationData: Dispatch<SetStateAction<LocationData | undefined>>;
 }
 
-function LocationSearch({ setShowLocationSearch, setLocationData }: Props) {
-  const [results, setResults] = useState<LocationData[]>();
-  const [loadingResults, setLoadingResults] = useState(false);
+function LocationSearch({ setShowLocationSearch }: Props) {
+  const [results, setResults] = useState<LocationData[] | undefined>(undefined);
+  const [resultsLoading, setResultsLoading] = useState(false);
 
   return (
     <div className={style.locationSearch}>
@@ -20,14 +19,10 @@ function LocationSearch({ setShowLocationSearch, setLocationData }: Props) {
         <IoCloseSharp />
       </button>
       <SearchForm
-        setLoadingResults={setLoadingResults}
+        setResultsLoading={setResultsLoading}
         setResults={setResults}
       />
-      <Results
-        results={results}
-        loadingResults={loadingResults}
-        setLocationData={setLocationData}
-      />
+      <Results results={results} resultsLoading={resultsLoading} />
     </div>
   );
 }
