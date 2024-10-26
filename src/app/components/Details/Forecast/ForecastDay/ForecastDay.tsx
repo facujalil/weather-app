@@ -1,7 +1,7 @@
 import style from "./ForecastDay.module.css";
 import { Day } from "@/app/types";
 import { useWeatherContext } from "@/app/context/WeatherContext";
-import { formatDateFromToday } from "@/app/utils/formatDateFromToday";
+import { formatDate } from "@/app/utils/formatDate";
 import { mapWeatherIconToImage } from "@/app/utils/mapWeatherIconToImage";
 import { convertCelsiusToFahrenheit } from "@/app/utils/convertCelsiusToFahrenheit";
 import WeatherImage from "@/app/components/common/WeatherImage/WeatherImage";
@@ -12,11 +12,15 @@ interface Props {
 }
 
 function ForecastDay({ day, index }: Props) {
-  const { unit } = useWeatherContext();
+  const { weatherData, unit } = useWeatherContext();
 
   return (
     <div className={style.forecastDay}>
-      <p>{index === 0 ? "Tomorrow" : formatDateFromToday(index + 1)}</p>
+      <p>
+        {index === 0
+          ? "Tomorrow"
+          : formatDate(index + 1, weatherData?.timezone_offset || 0)}
+      </p>
       <div className={style.weatherImgContainer}>
         <WeatherImage
           src={mapWeatherIconToImage(day.weather[0].icon)}

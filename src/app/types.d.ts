@@ -10,6 +10,7 @@ export interface LocationData {
 }
 
 export interface WeatherData {
+  timezone_offset: number;
   current: {
     temp: number;
     pressure: number;
