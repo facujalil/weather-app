@@ -19,7 +19,7 @@ function ForecastDay({ day, index }: Props) {
       <p>
         {index === 0
           ? "Tomorrow"
-          : formatDate(index + 1, weatherData?.timezone_offset || 0)}
+          : formatDate(index + 1, weatherData?.timezone)}
       </p>
       <div className={style.weatherImgContainer}>
         <WeatherImage

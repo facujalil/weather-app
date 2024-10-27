@@ -15,7 +15,7 @@ function MainInfo() {
       </div>
       <CurrentWeather />
       <div className={style.currentDate}>
-        <p>Today • {formatDate(0, weatherData?.timezone_offset || 0)}</p>
+        <p>Today • {formatDate(0, weatherData?.timezone)}</p>
       </div>
       {locationData ? (
         <div className={style.weatherLocation}>

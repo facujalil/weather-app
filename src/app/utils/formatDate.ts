@@ -1,13 +1,19 @@
-export const formatDate = (daysOffset: number, timezoneOffset: number) => {
-  const time = new Date().getTime() + 24 * 60 * 60 * 1000 * daysOffset;
-  const localTime = time + timezoneOffset * 1000;
+export const formatDate = (daysOffset: number, timezone?: string) => {
+  const date = new Date();
+  date.setDate(date.getDate() + daysOffset);
 
-  const date = new Date(localTime);
   const weekday = date.toLocaleString("en-US", {
     weekday: "short",
+    timeZone: timezone,
   });
-  const day = date.getDate();
-  const month = date.toLocaleString("en-US", { month: "short" });
+  const day = date.toLocaleString("en-US", {
+    day: "numeric",
+    timeZone: timezone,
+  });
+  const month = date.toLocaleString("en-US", {
+    month: "short",
+    timeZone: timezone,
+  });
 
   return `${weekday}, ${day} ${month}`;
 };
