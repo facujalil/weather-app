@@ -13,9 +13,7 @@ function LocationOption({ locationOption }: Props) {
   return (
     <div
       className={style.locationOption}
-      onClick={() => {
-        setLocationData(locationOption);
-      }}
+      onClick={() => setLocationData(locationOption)}
     >
       <p>
         {locationOption.name}

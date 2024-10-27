@@ -44,11 +44,7 @@ function Menu({ setShowLocationSearch, setWeatherDataLoading }: Props) {
 
   return (
     <div className={style.menu}>
-      <button
-        onClick={() => {
-          setShowLocationSearch(true);
-        }}
-      >
+      <button onClick={() => setShowLocationSearch(true)}>
         Search for places
       </button>
       <button
